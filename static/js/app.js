@@ -1,16 +1,16 @@
-// Function to fetch data from the URL and create the horizontal bar chart
+// Function to fetch data from the URL and creating horizontal bar chart
 function buildBarChart(selectedSubjectId) {
-    // Use D3 to fetch data from the provided URL
+    // Using D3 Library to fetch data from provided URL
     d3.json("https://2u-data-curriculum-team.s3.amazonaws.com/dataviz-classroom/v1.1/14-Interactive-Web-Visualizations/02-Homework/samples.json").then(function(data) {
-      // Filter the data to get the selected test subject's information
+      // Filter data to get selected test subjects information
       var selectedData = data.samples.filter(sample => sample.id === selectedSubjectId)[0];
   
-      // Sort the data to get the top 10 OTUs based on sample_values
+      // Sorting data to get top 10 OTUs based on sample_values
       var top10OTUs = selectedData.sample_values.slice(0, 10).reverse();
       var top10OTUIds = selectedData.otu_ids.slice(0, 10).map(id => `OTU ${id}`).reverse();
       var top10OTULabels = selectedData.otu_labels.slice(0, 10).reverse();
   
-      // Create the trace for the horizontal bar chart
+      // Creating trace for the horizontal bar chart
       var trace = {
         type: "bar",
         x: top10OTUs,
@@ -19,14 +19,15 @@ function buildBarChart(selectedSubjectId) {
         orientation: 'h'
       };
   
-      // Create the data array containing the trace
+      // Creating data array containing the trace
       var data = [trace];
   
-      // Define the layout for the horizontal bar chart
+      // Defining layout for horizontal bar chart
       var layout = {
         title: `Top 10 OTUs for Test Subject ${selectedSubjectId}`,
         xaxis: { title: "Sample Values" },
-        yaxis: { autorange: "reversed" }, // To display the y-axis in descending order
+        // Can Display y-axis in decending order per below code
+        // yaxis: { autorange: "reversed" },
         margin: { l: 150 } // Adjust left margin to accommodate long OTU labels
       };
   
@@ -35,14 +36,14 @@ function buildBarChart(selectedSubjectId) {
     });
   }
   
-  // Function to fetch data from the URL and create the bubble chart
+  // Function to fetch data from the URL and creating bubble chart
   function buildBubbleChart(selectedSubjectId) {
-    // Use D3 to fetch data from the provided URL
+    // Using D3 to fetch data from the provided URL
     d3.json("https://2u-data-curriculum-team.s3.amazonaws.com/dataviz-classroom/v1.1/14-Interactive-Web-Visualizations/02-Homework/samples.json").then(function(data) {
-      // Filter the data to get the selected test subject's information
+      // Filter the data to get selected test subjects information
       var selectedData = data.samples.filter(sample => sample.id === selectedSubjectId)[0];
   
-      // Create the trace for the bubble chart
+      // Creating trace for the bubble chart
       var trace = {
         x: selectedData.otu_ids,
         y: selectedData.sample_values,
@@ -57,10 +58,10 @@ function buildBarChart(selectedSubjectId) {
         }
       };
   
-      // Create the data array containing the trace
+      // Creating data array containing the trace
       var data = [trace];
   
-      // Define the layout for the bubble chart
+      // Defining layout for the bubble chart
       var layout = {
         title: `Sample ${selectedSubjectId} - Biodiversity`,
         xaxis: { title: "OTU IDs" },
@@ -75,7 +76,7 @@ function buildBarChart(selectedSubjectId) {
   
   // Function to display the sample metadata
   function displayMetadata(selectedSubjectId) {
-    // Use D3 to fetch data from the provided URL
+    // Using D3 to fetch data from the provided URL
     d3.json("https://2u-data-curriculum-team.s3.amazonaws.com/dataviz-classroom/v1.1/14-Interactive-Web-Visualizations/02-Homework/samples.json").then(function(data) {
       // Filter the metadata to get the selected test subject's information
       var metadata = data.metadata.filter(meta => meta.id === parseInt(selectedSubjectId))[0];
