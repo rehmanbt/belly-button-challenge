@@ -4,4 +4,5 @@ Bar chart with drop down menu successfully created providing sample details and 
 Bubble chart successfully added and successfully gets updated as the sample is selected from the drop down option.
 Sample metadata appearing selecting from drop down option matching exactly with expected results. 
 Dashboard successfully appearing in index.html
-Advanced challenge assignment not included in the results.
+Advanced challenge assignment not considered for completion in the results.
+Github pages configured for the repository to the main branch as required.
